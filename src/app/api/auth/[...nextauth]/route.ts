@@ -27,7 +27,9 @@ const handler = NextAuth({
                 //make a database call to create the user
 
                 return{
-                    id:'user1'
+                    id:'user1',
+                    name:"swata swayam",
+                    email:"swatasawdajbd@gmail.com"
                 }
             }
         })
@@ -39,6 +41,14 @@ const handler = NextAuth({
                 return false
             }
             return true
+        },
+        jwt:async ({token , user}) =>{
+            if(user){
+                token.id = user.id
+            }
+            console.log(token);
+            
+            return token;
         }
     }
 })
