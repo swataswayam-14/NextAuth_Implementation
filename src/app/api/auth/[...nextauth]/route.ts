@@ -21,16 +21,21 @@ const handler = NextAuth({
                 password:{label:'password', type:'password', placeholder:'Password'},
             },
             async authorize(credentials:any){
+
+                const username = credentials.username;
+                const password = credentials.password;
+                //make a database call to create the user
+
                 return{
                     id:'user1'
                 }
             }
         })
-    ]
+    ],
+    secret: process.env.NEXTAUTH_SECRET
 })
 
-export const GET = handler
-//export const POST = handler
+export {handler as GET, handler as POST}
 
 
 
