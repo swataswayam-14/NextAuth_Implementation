@@ -1,9 +1,10 @@
 "use client"
 
 import { useRouter } from "next/navigation";
-import { signIn, signOut } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 export default function AppBar(){
     const router = useRouter()
+    const session = useSession()
     return <div>
         {/* <button onClick={()=>{
             router.push('/api/auth/kjas/sadas')
@@ -17,5 +18,6 @@ export default function AppBar(){
         }}>
             Logout
         </button>
+        {JSON.stringify(session)}
     </div>
 }
