@@ -49,6 +49,14 @@ const handler = NextAuth({
             console.log(token);
             
             return token;
+        },
+        session:({session, token, user}:any)=>{
+            if(session && session.user){
+                session.user.id = token.id; //or token.sub
+            }
+            console.log(session);
+            
+            return session;
         }
     }
 })
